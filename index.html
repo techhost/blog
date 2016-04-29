@@ -2,4 +2,225 @@
 layout: default
 title: test title
 ---
-<p>Hello world!</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>blog</title>
+<link href="favicon.ico" type="img/x-icon" rel=icon>
+<link rel="stylesheet" href="css/jquery.fullPage.css">
+<link href="css/index.css" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0;}
+body { font-family: "Microsoft YaHei" ! important;
+   font-size: 16px;
+   color: rgba(255,255,255,0.8);
+}
+
+.titles-pane {
+   position: fixed;
+   top: 0px;
+   width: 100%;
+   height: 55px;
+   z-index: 999;
+}
+.titles-pane .img {
+   position: absolute;
+   width: 207px;
+   height: 54px;
+   background-repeat: no-repeat;
+   background-image: url(images/1-logo.png);
+   top: 30px;
+   left: 80px;
+   background-size: 80% 80%;
+}
+.titles-pane .tab-pane {
+   position: absolute;
+   right: 0px;
+   float: right;
+   top: 0px;
+   height: 100%;
+   padding-top: 20px;
+}
+.tab-pane div {
+   float: right;
+   width: 100px;
+   height: 100%;
+   display: inline-block;
+   line-height: 55px;
+   text-align: center;
+   font-size: 18px;
+}
+.tab-pane div a {
+   color: white;
+   opacity: 0.6;
+   text-decoration:none;
+   width: 100%;
+   height: 100%;
+}
+
+.tab-pane div.active a { opacity: 1;font-size: 20px;}
+
+#fullPage-nav span {
+   background-color: white;
+   border: none;
+}
+
+#fullPage-nav li .active span {
+   background-color: #00CCFF;
+}
+
+.section { position: relative; overflow: hidden;}
+.section .bg { position: absolute; left: 0; top: 0; width: 100%; height: 100%;}
+.section .bg img { display: block; width: 100%; height: 100%;}
+
+.bg11 { position: absolute; left: 50%; top: 50%; margin-left: -332px; margin-top: -301px; width: 664px; height: 602px; background: url(images/home-title.png) 100% 100% no-repeat; transition: all 1s; opacity: 0; -webkit-transform:scale(0.5, 0.5); transform:scale(0.5, 0.5);}
+
+.bg21 { position: absolute; top: 40%; width: 85px; height: 107px; margin-left: -42px;background-image: url(images/generate-power.png); background-size: 100% 100%; transition: all 1s;  opacity: 0; left: -20%;}
+.bg22 { position: absolute; left: 50%; width: 85px; height: 107px; margin-left: -42px;background-image: url(images/network.png); background-size: 100% 100%; transition: all 1s; opacity: 0; top: -107px;}
+.bg23 { position: absolute; top: 40%; width: 85px; height: 107px; margin-left: -42px; background-image: url(images/sell-power.png); background-size: 100% 100%; transition: all 1s; opacity: 0; left: 120%;}
+.bg24 { position: absolute; left: -619px; top: 0px; width: 619px; height: 348px; background: url(images/earth.png) 0 0 no-repeat; opacity: 0; transition: all 1s;}
+.text21 { position: absolute; left: 20%; width: 24%; margin-left: -12%;transition: all 1s;  opacity: 0; top: 40%; margin-top: 120px; text-align: center;-webkit-transform:scale(0.5, 0.5); transform:scale(0.5, 0.5);}
+.text22 { position: absolute; left: 50%; width: 24%; margin-left: -12%;transition: all 1s; opacity: 0; top: 40%; margin-top: 120px; text-align: center;-webkit-transform:scale(0.5, 0.5); transform:scale(0.5, 0.5);}
+.text23 { position: absolute; left: 80%; width: 24%; margin-left: -12%; transition: all 1s; opacity: 0; top: 40%; margin-top: 120px; text-align: center;-webkit-transform:scale(0.5, 0.5); transform:scale(0.5, 0.5);}
+
+.active .bg11 { opacity: 1; -webkit-transform:scale(1, 1); transform:scale(1, 1); transition-delay: 0.7s; }
+
+.active .bg21 { opacity: 1; left: 20%; transition-delay: 0.7s;}
+.active .bg22 { opacity: 1; top: 40%; transition-delay: 0.7s;}
+.active .bg23 { opacity: 1; left: 80%; transition-delay: 0.7s;}
+.active .bg24 { opacity: 1; left: 0px; transition-delay: 0.7s;}
+
+.active .text21 { opacity: 1;  -webkit-transform:scale(1, 1); transform:scale(1, 1); transition-delay: 0.7s;}
+.active .text22 { opacity: 1;  -webkit-transform:scale(1, 1); transform:scale(1, 1); transition-delay: 0.7s;}
+.active .text23 { opacity: 1;  -webkit-transform:scale(1, 1); transform:scale(1, 1); transition-delay: 0.7s;}
+
+.active .torch-title { opacity: 1; transition-delay: 0.7s;-webkit-transform:scale(1, 1); transform:scale(1, 1)}
+.active .phone-img { right: 5%; transition-delay: 0.9s;}
+.active .product-concent, .active .download-concent { opacity: 1; -webkit-transform:scale(1, 1); transform:scale(1, 1);transition-delay: 0.9s;}
+.active .download-btn { bottom: 20%; transition-delay: 1.1s;}
+.active .image2 { bottom: 20%; transition-delay: 0.9s;}
+.active .android-btn { top: 20%; transition-delay: 0.9s;}
+.active .ios-btn { top: 20%; transition-delay: 1.1s;}
+.active .content { opacity: 1; -webkit-transform:scale(1, 1); transform:scale(1, 1);transition-delay: 0.7s;}
+
+.active .content-detail { opacity: 1; bottom: 0px;transition-delay: 0.7s;}
+
+</style>
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/jquery-ui-1.10.3.min.js"></script>
+<script src="js/jquery.fullPage.min.js"></script>
+<script>
+$(function(){
+   $.fn.fullpage({
+      verticalCentered: false,
+      anchors: ['guanwang1', 'guanwang2', 'guanwang3', 'guanwang4', 'guanwang5'],
+      navigation: true,
+      navigationTooltips: ['首页', '解决方案', '动态', '产品', '关于'],
+      menu: '#titlesName'
+   });
+});
+</script>
+</head>
+<body>
+<div class="titles-pane">
+   <div class="img"></div>
+   <div id="titlesName" class="tab-pane">
+      <div data-menuanchor="guanwang5">
+         <a href="#guanwang5">关于</a>
+      </div>
+      <div data-menuanchor="guanwang4">
+         <a href="#guanwang4">产品</a>
+      </div>
+      <div data-menuanchor="guanwang3">
+         <a href="#guanwang3">动态</a>
+      </div>
+      <div data-menuanchor="guanwang2">
+         <a href="#guanwang2">解决方案</a>
+      </div>
+      <div data-menuanchor="guanwang1" class="active">
+         <a href="#guanwang1">首页</a>
+      </div>
+   </div>
+</div>
+<div class="section section1">
+   <div class="bg"><img src="images/bg.png" alt=""></div>
+   <div class="bg11"></div>
+</div>
+
+<div class="section section2">
+   <div class="bg"><img src="images/bg.png" alt=""></div>
+   <div class="bg21"></div>
+   <div class="bg22"></div>
+   <div class="bg23"></div>
+   <div class="bg24"></div>
+   <div class="text21">在电力体制改革与供给侧结构性改革的背景下，发电企业面临日益严峻的市场挑战，对精细化管理及科学决策水平提出了更高要求，图迹科技通过“手电”为企业提供移动监视、分析诊断、决策指导和数据报告功能。</div>
+   <div class="text22">图迹科技基于电网调控业务需求及未来电力市场的需要，通过电网调控平台进行电量余缺进行预测， 交易方案推荐， 日内实时交易辅助实施， 另外对交易数据进行大数据分析， 及时发现主要因素，针对性采取措施，优化电力交易，提高效益。</div>
+   <div class="text23">图迹科技售电业务管理平台是基于通信和大数据技术的，融入电力系统及电力市场理论的综合信息系统，为售电公司参与电力市场交易和稳定、优质、经济运行提供技术保证,为签约用户提供便捷的互联网营业厅服务。</div>
+</div>
+
+<div class="section section3">
+   <div class="bg"><img src="images/bg.png" alt=""></div>
+
+</div>
+
+<div class="section section4">
+   <div class="bg"><img src="images/bg.png" alt=""></div>
+   <div class="torch-title">
+      <div class="torch-title1">手电 Torch V4.0</div>
+      <div class="torch-title2">想你所想 知你所需</div>
+   </div>
+   <div class="android-btn">Android</div>
+   <div class="ios-btn">IOS</div>
+   <div class="phone-img"></div>
+   <div class="product-concent">
+      <p>图迹产品遍布全国11个省，分布在华东、华中、华北、东北、西北、南方电网，为华能、华电、国电、大唐、国家电投、神华、华润、国投、京能、粤电、河北建投、陕煤等12家能源集团提供产品服务，涉及发电装机容量2364万千瓦，年发电量约1182亿千瓦时，相当于国内排名第9位的发电集团；覆盖的电厂近40个，日均访问人次达9.2万，位居国内同类产品之首。</p>
+   </div>
+   <div class="download">
+      <div class="download-concent">
+         <p>版本：v4.0</p>
+         <p>大小：4.23M</p>
+         <p>时间：2016-5-20</p>
+         <p>系统：Android 2.3及以上版本</p>
+      </div>
+      <button class="download-btn">立即下载</button>
+      <div class="image2">
+         <img class="img_small" src="images/code-big.png" onMouseOut="this.className='img_small'" onMouseOver="this.className='img_big'">
+      </div>
+   </div>
+</div>
+
+<div class="section section5">
+   <div class="bg"><img src="images/bg.png" alt=""></div>
+   <div class="content" ><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;西安图迹信息科技有限公司（简称“图迹科技）成立于2013年，是一家国家认定的软件企业，是中国科学院西安光机所的大数据应用工程中心，是陕西大数据产业联盟核心企业之一。2015年，公司入选陕西省第一批省级中小企业成长梯队、西安市科技计划项目（小巨人）科技企业小巨人培育计划、西安市技术创新项目。</p>
+      <br>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图迹科技凭借其在大数据、云计算、移动互联网和电力专业方面的技术优势，现已成为国内领先的发电企业移动管理综合解决方案提供商。公司的明星产品“图迹手电”通过SaaS模式提供移动管理和大数据应用，助力发电企业提高管理效率与效益，现已接入数十家包括五大发电集团及神华、京能、华润、龙源电力等发电集团所属大型火力及新能源发电企业。</p>
+      <br>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;未来，公司将在“把大数据变成新的能源”这一愿景激发下，进一步为发、输、配、售、用电主体以及上下游供应商提供更多科学有效和可靠的信息技术解决方案，为电力供给侧改革和需求侧管理做出应有的贡献并提供有益的探索。</p>
+   </div>
+   <div class="content-detail">
+      <div class="company-info-1">
+         <div style="color: white; font-size: 20px; line-height: 30px;">图迹科技   TOGEEK.CN</div>
+         <p>地址：西安市高新区锦业路69号瞪羚谷创业研发园A座10层</p>
+         <p>邮箱：service@togeek.cn</p>
+         <p>传真：029-83299989</p>
+      </div>
+      <div class="company-info-2">
+         <img src="images/1-phone.png"></img>
+         <p>服务电话</p>
+         <p>400-029-9763</p>
+      </div>
+      <div class="company-info-3">
+         <img src="images/1-weixin.png"></img>
+         <p>客服微信</p>
+         <p>togeekService</p>
+      </div>
+      <div class="company-info-4">
+         <img style="margin-top: 0" src="images/bottom_logo.png"></img>
+         <div>关注图迹<br>公共账号</div>
+      </div>
+   </div>
+</div>
+</body>
+</html>
+
